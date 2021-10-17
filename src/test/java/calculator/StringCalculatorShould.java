@@ -54,37 +54,39 @@ class StringCalculatorShould {
 			assertEquals("negatives not allowed [-2]", e.getMessage());
 		}
 	}
+
 	@Test
-	public void multipleNegativeNumbers() throws Exception
-	{
+	public void multipleNegativeNumbers() throws Exception {
 		try {
 			calculator.add("-1,-2,3");
 		}
-		
-		catch(Exception e)
-		{
+
+		catch (Exception e) {
 			assertEquals("negatives not allowed [-1, -2]", e.getMessage());
 		}
 	}
 
 	@Test
-	public void validateCallCount(){
+	public void validateCallCount() {
 		assertEquals(calculator.getCallCount(), calculator.count);
 	}
 
 	@Test
-	public void ignoreNumsGrtThn1000() throws Exception
-	{
+	public void ignoreNumsGrtThn1000() throws Exception {
 		assertEquals(2, calculator.add("2,1001"));
 	}
+
 	@Test
-	public void validateAnyLengthDelimeter() throws Exception
-	{
+	public void validateAnyLengthDelimeter() throws Exception {
 		assertEquals(6, calculator.add("//[***]\n1***2***3"));
 	}
-  
+
 	@Test
-	public void multipleDelimeter() throws Exception	{
+	public void multipleDelimeter() throws Exception {
 		assertEquals(6, calculator.add("//[*][%]\n1*2%3"));
+	}
+	@Test
+	public void mulCustomDelWithAnyLength() throws Exception {
+		assertEquals(6, calculator.add("//[*][%%]\n1*2%%3"));
 	}
 }
