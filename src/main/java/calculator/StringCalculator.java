@@ -26,9 +26,12 @@ class StringCalculator {
 					if (Integer.parseInt(num) < 0) {
 						list.add(Integer.parseInt(num));
 
-
 					}
+					else {
+						if(Integer.parseInt(num)>1000)
+						num="0";
 					sum += Integer.parseInt(num);
+				}
 				}
 				if(list.size()>0)
                          throw new StringCalculatorException("negatives not allowed "+list.toString());

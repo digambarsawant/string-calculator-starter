@@ -72,4 +72,10 @@ class StringCalculatorShould {
 		assertEquals(calculator.getCallCount(), calculator.count);
 	}
 
+	@Test
+	public void ignoreNumsGrtThn1000() throws Exception
+	{
+		assertEquals(2, calculator.add("2,1001"));
+	}
+
 }
