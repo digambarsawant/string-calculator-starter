@@ -1,7 +1,7 @@
 package calculator;
 
 class StringCalculator {
-	public int add(String input) {
+	public int add(String input) throws Exception {
 		// if string is empty it returns 0
 		int sum = 0;
 		if (input.isEmpty())
@@ -14,6 +14,10 @@ class StringCalculator {
 				String[] nums = StringCalculator.split(input);
 
 				for (String num : nums) {
+					if(Integer.parseInt(num)<0) {
+				          throw new StringCalculatorException("negatives not allowed "+num);
+
+					}
 					sum += Integer.parseInt(num);
 				}
 				return sum;
@@ -22,6 +26,7 @@ class StringCalculator {
 	}
 
 	private static String[] split(String str) {
+		//for allow different delimiters
         if (str.startsWith("//")) {
             String delimiter = str.substring(2, 3);
             return str.substring(4).split(delimiter);
