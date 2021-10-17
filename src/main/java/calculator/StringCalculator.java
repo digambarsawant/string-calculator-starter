@@ -1,9 +1,15 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
+
 class StringCalculator {
 	public int add(String input) throws Exception {
 		// if string is empty it returns 0
 		int sum = 0;
+		List<Integer>list=new ArrayList<>();
 		if (input.isEmpty())
 			return 0;
 		else {
@@ -14,26 +20,29 @@ class StringCalculator {
 				String[] nums = StringCalculator.split(input);
 
 				for (String num : nums) {
-					if(Integer.parseInt(num)<0) {
-				          throw new StringCalculatorException("negatives not allowed "+num);
+					if (Integer.parseInt(num) < 0) {
+						list.add(Integer.parseInt(num));
+
 
 					}
 					sum += Integer.parseInt(num);
 				}
-				return sum;
+				if(list.size()>0)
+                         throw new StringCalculatorException("negatives not allowed "+list.toString());
+                        
+					return sum;
 			}
 		}
 	}
 
 	private static String[] split(String str) {
-		//for allow different delimiters
-        if (str.startsWith("//")) {
-            String delimiter = str.substring(2, 3);
-            return str.substring(4).split(delimiter);
-        }
+		// for allow different delimiters
+		if (str.startsWith("//")) {
+			String delimiter = str.substring(2, 3);
+			return str.substring(4).split(delimiter);
+		}
 		String[] nums = str.split(",|\n");
 		return nums;
 	}
-	
-	
+
 }
