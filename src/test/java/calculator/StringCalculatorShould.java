@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorShould {
-
+ StringCalculator calculator=new  StringCalculator();
     @Test
     void empty_string_should_return_0() {
         StringCalculator stringCalculator = new StringCalculator();
@@ -22,12 +22,19 @@ class StringCalculatorShould {
         StringCalculator calculator = new StringCalculator();
         assertEquals(3, calculator.add("1,2"));
     }
-
+  //  "add test cases to check multiple test cases"
     @Test
     public void addUnknownAmountOfNumber() throws Exception {
         StringCalculator calculator = new StringCalculator();
         assertEquals(13, calculator.add("1,2,5,3,2"));
 
     }
+    @Test
+	public void acceptNewlineAsValidDelimiter()
+	{
+    	
+		assertEquals(6, calculator.add("1\n2,3"));
+	}
+
 
 }

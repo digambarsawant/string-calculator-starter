@@ -22,7 +22,7 @@ class StringCalculator {
 	}
 
 	private static String[] split(String str) {
-		String[] nums = str.split(",");
+		String[] nums = str.split(",|\n");
 		return nums;
 	}
 }
