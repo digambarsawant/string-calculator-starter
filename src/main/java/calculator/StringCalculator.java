@@ -6,9 +6,12 @@ import java.util.List;
 
 
 class StringCalculator {
+	static int count = 0;
+
 	public int add(String input) throws Exception {
 		// if string is empty it returns 0
 		int sum = 0;
+		count++;
 		List<Integer>list=new ArrayList<>();
 		if (input.isEmpty())
 			return 0;
@@ -44,5 +47,9 @@ class StringCalculator {
 		String[] nums = str.split(",|\n");
 		return nums;
 	}
+	public int getCallCount() {
+		return count;
+	}
+
 
 }
